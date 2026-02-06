@@ -9,9 +9,6 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2f6b3f">
 
-<!-- PDF.js v5 -->
-<script src="pdf.min.js"></script>
-
 <style>
 :root { --green:#2f6b3f; --gray:#6b6b6b; --bg:#f4f4f4; --text:#222; }
 
@@ -117,11 +114,13 @@ textarea { width:100%; min-height:80px; margin-top:1rem; padding:0.5rem; }
 </section>
 </main>
 
-<script type="text/javascript">
-// PDF.js v5 setup
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+<script type="module">
+import * as pdfjsLib from './pdf.mjs';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs';
 const pdfUrl = 'irpg.pdf';
 let pdfDoc = null;
+
 const IRPG_SECTIONS = {
   sizeup:[6],
   risk:[9],
